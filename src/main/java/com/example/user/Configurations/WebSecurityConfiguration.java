@@ -39,7 +39,7 @@ public class WebSecurityConfiguration {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/signup", "/login").permitAll()
-                                .requestMatchers("/roles/get").authenticated()
+                                .requestMatchers("/roles/get","/change/pass").authenticated()
                                 .requestMatchers("/user/**")
                                 .hasAuthority("ROLE_admin") // Use ROLE_ADMIN for consistency
                                 .anyRequest().authenticated())

@@ -42,6 +42,11 @@ public class AuthentificationService implements  AuthService {
        String HashPassword= passwordEncoder.encode(signUpRequest.getPassword());
        a.setPassword(HashPassword);
 
+
+
+
+
+
         // Define the allowed roles
         Set<String> allowedRoles = Set.of("admin", "user", "adherant club", "adhearant societe", "professeur");
 
@@ -65,6 +70,11 @@ public class AuthentificationService implements  AuthService {
             Role existingRole = roleService.findByName(role.getName());
             rolesToAdd.add(existingRole);
         }
+
+
+
+
+
         a.setRoles(rolesToAdd);
        appUserRepository.save(a);
        return  true;

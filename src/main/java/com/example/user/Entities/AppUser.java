@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.repository.cdi.Eager;
 
 import java.util.HashSet;
@@ -17,8 +18,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class AppUser {
+public class AppUser  {
 
 
     @Id

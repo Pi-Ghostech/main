@@ -1,7 +1,7 @@
 package com.example.user.filters;
 
 
-import com.example.user.services.jwt.AppUserService;
+import com.example.user.services.jwt.loaduser;
 import com.example.user.utilis.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -23,7 +23,7 @@ import java.io.IOException;
 public class JwtRequestFilter  extends OncePerRequestFilter {
 
 
-    private  final AppUserService appUserService;
+    private  final loaduser appUserService;
 
 
     private   final JwtUtil jwtUtil;

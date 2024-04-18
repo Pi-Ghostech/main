@@ -1,15 +1,11 @@
 package com.example.user.Controllers;
 
 import com.example.user.Entities.AppUser;
-import com.example.user.dto.SignUpRequest;
 import com.example.user.services.AuthService;
-import com.example.user.services.AuthentificationService;
 import com.example.user.services.jwt.AppUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin("*")

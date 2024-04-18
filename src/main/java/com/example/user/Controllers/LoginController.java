@@ -4,6 +4,7 @@ package com.example.user.Controllers;
 import com.example.user.dto.loginRequest;
 import com.example.user.dto.loginResponse;
 import com.example.user.services.jwt.AppUserService;
+import com.example.user.services.jwt.loaduser;
 import com.example.user.utilis.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class LoginController {
   private  final AuthenticationManager authenticationManager;
 
 
-  private  final AppUserService appUserService;
+  private  final loaduser appUserService;
   private  final JwtUtil jwtUtil;
 
 
