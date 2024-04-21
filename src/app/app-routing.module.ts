@@ -8,6 +8,9 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { UpdateModuleComponent } from './update-module/update-module.component';
 import {UsersComponent} from "./users/users.component";
 import {RolesComponent} from "./roles/roles.component";
+import {LoginComponent} from "./login/login.component";
+import {SignUpComponent} from "./sign-up/sign-up.component";
+import {BackTemplateComponent} from "./backoffice/back-template/back-template.component";
 
 const routes: Routes = [
   {path: 'modules', component: ModuleListComponent},
@@ -19,6 +22,9 @@ const routes: Routes = [
   {path: 'update-course/:courseId', component: UpdateCourseComponent},
   {path: 'users', component: UsersComponent},
   {path: 'roles', component: RolesComponent},
+  {path: 'login', component:LoginComponent},
+  {path: 'signup',component:SignUpComponent},
+  {path: 'backtemplate',component: BackTemplateComponent}
  /* {path: 'create-user', component: CreateModuleComponent},
   {path: 'create-role', component: CreateCourseComponent},
   {path: 'update-user/:moduleId', component: UpdateModuleComponent},

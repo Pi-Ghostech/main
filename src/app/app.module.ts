@@ -14,6 +14,9 @@ import { SidebarComponent } from './backoffice/sidebar/sidebar.component';
 import { HomeComponent } from './backoffice/home/home.component';
 import { UsersComponent } from './users/users.component';
 import { RolesComponent } from './roles/roles.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { BackTemplateComponent } from './backoffice/back-template/back-template.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -30,6 +33,9 @@ import { RolesComponent } from './roles/roles.component';
     HomeComponent,
     UsersComponent,
     RolesComponent,
+    SignUpComponent,
+    BackTemplateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
