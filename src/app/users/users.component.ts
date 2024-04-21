@@ -27,10 +27,31 @@ export class UsersComponent implements OnInit{
         const loginResponse = response as LoginResponse;
         localStorage.setItem('token', loginResponse.jwtToken);
         console.log('Login successful');
-        this.getUsers(); // After successful login, fetch users
+        // After successful login, check if user has admin role before accessing the resource
+        this.checkUserRoleAndAccessResource();
       },
       (error) => {
         console.error('Login failed:', error);
+      }
+    );
+  }
+
+  checkUserRoleAndAccessResource() {
+    // Call a service method to check user role using the token
+    this.service.checkUserRole().subscribe(
+      (response: any) => {
+        const userRole = response.role; // Assuming the response contains the user role
+        if (userRole === 'admin') {
+          console.log('User has admin role. Access granted.');
+          this.getUsers(); // Fetch users after successful login and admin role check
+        } else {
+          console.error('User does not have admin role. Access denied.');
+          // Handle access denied scenario (e.g., show an error message)
+        }
+      },
+      (error) => {
+        console.error('Failed to check user role:', error);
+        // Handle error scenario (e.g., show an error message)
       }
     );
   }

@@ -22,6 +22,11 @@ export class ServiceUsersService {
     return this.http.post('http://localhost:8080/login',a);
 
   }
+  checkUserRole(): Observable<any> {
+    // Assuming the backend endpoint to check user role is '/user/role'
+    // Adjust the endpoint according to your backend implementation
+    return this.http.get<any>('/user/role');
+  }
   deleteUser(id:number){
     return this.http.delete('http://localhost:8080/user/delete/'+id) ;
   }
