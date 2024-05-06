@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Module } from '../module';
-import { ModuleService } from '../module.service';
+import { Module } from '../Entity/module';
+import { ModuleService } from '../Services/CourseAndModuleServices/module.service';
 
 @Component({
   selector: 'app-create-module',
@@ -13,7 +13,7 @@ export class CreateModuleComponent implements OnInit {
   module: Module = new Module();
   constructor(private moduleService: ModuleService,
     private router: Router) {}
-  
+
   ngOnInit(): void{
   }
 
@@ -26,7 +26,7 @@ export class CreateModuleComponent implements OnInit {
   }
 
   goToModuleList(){
-    this.router.navigate(['/modules']);
+    this.router.navigate(['/backtemplate/modules']);
   }
 
   onSubmit(){

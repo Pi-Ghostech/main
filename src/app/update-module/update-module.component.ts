@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Module } from '../module';
-import { ModuleService } from '../module.service';
+import { Module } from '../Entity/module';
+import {ModuleService} from "../Services/CourseAndModuleServices/module.service";
+
 
 @Component({
   selector: 'app-update-module',
@@ -18,7 +19,7 @@ export class UpdateModuleComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.moduleId = +params['moduleId']; 
+      this.moduleId = +params['moduleId'];
       console.log('moduleId:', this.moduleId);
       if (!isNaN(this.moduleId)) {
         this.moduleService.getModuleById(this.moduleId).subscribe(
@@ -34,19 +35,19 @@ export class UpdateModuleComponent implements OnInit {
       }
     });
   }
-  
+
   onSubmit() {
     console.log('Submitting update for module:', this.module);
     this.moduleService.updateModule(this.moduleId, this.module).subscribe(
       data => {
         console.log('Update successful:', data);
         this.goToModuleList();
-      }, 
+      },
       error => console.error('Update failed:', error)
     );
   }
 
   goToModuleList(){
-    this.router.navigate(['/modules']);
+    this.router.navigate(['/backtemplate/modules']);
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Module } from '../module';
-import { ModuleService } from '../module.service';
-import {ServiceUsersService} from "../Services/service-users.service";
+import { Module } from '../Entity/module';
+import { ModuleService } from '../Services/CourseAndModuleServices/module.service';
+import {ServiceUsersService} from "../Services/UserService/service-users.service";
 import {User} from "../Entity/User";
 
 @Component({
@@ -32,7 +32,7 @@ private getModules(){
 }
 
 updateModule(moduleId: number){
-  this.router.navigate(['update-module',moduleId]);
+  this.router.navigate(['/backtemplate/update-module',moduleId]);
 }
 
 deleteModule(moduleId: number){

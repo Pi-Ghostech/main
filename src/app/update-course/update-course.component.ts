@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Course } from '../course';
-import { CourseService } from '../course.service';
-import { Module } from '../module';
+import { Course } from '../Entity/course';
+import { CourseService } from '../Services/CourseAndModuleServices/course.service';
+
+import { Module } from '../Entity/module';
+
+
+
 
 @Component({
   selector: 'app-update-course',
@@ -20,13 +24,13 @@ export class UpdateCourseComponent implements OnInit{
 
     ngOnInit(): void {
       this.courseId = this.route.snapshot.params["courseId"];
-      
+
       this.courseService.getCourseById(this.courseId).subscribe(data => {
         this.course = data;
-    
+
         this.courseService.getModulesList().subscribe(modules => {
           this.modules = modules;
-          
+
           if (this.course.module) {
             const selectedModule = this.modules.find(module => module.moduleId === this.course.module.moduleId);
             if (selectedModule) {
@@ -43,13 +47,13 @@ export class UpdateCourseComponent implements OnInit{
         data => {
           console.log('Update successful:', data);
           this.goToCourseList();
-        }, 
+        },
         error => console.error('Update failed:', error)
       );
     }
 
   goToCourseList() {
-    this.router.navigate(['/courses']);
+    this.router.navigate(['/backtemplate/courses']);
   }
 
 }

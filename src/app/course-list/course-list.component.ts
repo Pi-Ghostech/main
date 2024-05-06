@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Course } from '../course';
-import { CourseService } from '../course.service';
+import { Course } from '../Entity/course';
+import { CourseService } from '../Services/CourseAndModuleServices/course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -10,9 +10,10 @@ import { CourseService } from '../course.service';
 })
 export class CourseListComponent implements OnInit{
   courses!: Course[];
+  fileContent: string = '';
 
   constructor(private courseService: CourseService,
-    private router: Router){}
+              private router: Router){}
 
   ngOnInit(): void {
     this.getCourses();
@@ -25,7 +26,7 @@ export class CourseListComponent implements OnInit{
   }
 
   updateCourse(courseId: number){
-    this.router.navigate(['update-course',courseId]);
+    this.router.navigate(['/backtemplate/update-course',courseId]);
   }
 
   deleteCourse(courseId: number){
@@ -33,6 +34,35 @@ export class CourseListComponent implements OnInit{
       console.log(data);
       this.getCourses();
     })
+  }
+
+  getFileUrl(attachmentFileName: string): string {
+    return `http://localhost:8080/course/files/${attachmentFileName}`;
+  }
+
+
+  previewFile(fileUrl: string) {
+    fetch(fileUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        const blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl, '_blank');
+      })
+      .catch(error => {
+        console.error('Error fetching file:', error);
+      });
+  }
+
+  getFileType(attachmentFileName: string): string {
+    const extension = attachmentFileName.split('.').pop()?.toLowerCase();
+    if (extension === 'pdf') {
+      return 'pdf';
+    } else {
+      return 'text';
+    }
+  }
+  navigate(){
+    this.router.navigateByUrl("/backtemplate/create-course")
   }
 
 }

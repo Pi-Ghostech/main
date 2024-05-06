@@ -1,0 +1,14 @@
+/* rating-stars.component.css */
+.rating {
+    font-size: 24px; /* Taille des étoiles */
+  }
+  
+  .star {
+    cursor: pointer;
+    color: #ccc; /* Couleur des étoiles inactives */
+  }
+  
+  .star.active {
+    color: gold; /* Couleur des étoiles actives */
+  }
+  

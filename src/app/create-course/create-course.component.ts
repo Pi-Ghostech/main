@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Course } from '../course';
-import { CourseService } from '../course.service';
-import { Module } from '../module';
-import { ModuleService } from '../module.service';
+import { Course } from '../Entity/course';
+import { CourseService } from '../Services/CourseAndModuleServices/course.service';
+import { Module } from '../Entity/module';
+import { ModuleService } from '../Services/CourseAndModuleServices/module.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-course',
@@ -12,16 +13,24 @@ import { ModuleService } from '../module.service';
 })
 export class CreateCourseComponent implements OnInit {
 
+  protected aFormGroup!: FormGroup;
   course: Course = new Course();
   modules: Module[] = [];
+  selectedFile: File | undefined;
 
   constructor(private moduleService: ModuleService,
               private courseService: CourseService,
-              private router: Router) {}
+              private router: Router,
+              private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.aFormGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
     this.loadModules();
   }
+
+  siteKey:string = "6LfT-8QpAAAAAHzfstM3iey1u9gKkw4ZyNzfkpTF";
 
   loadModules() {
     this.moduleService.getModulesList().subscribe(
@@ -38,8 +47,16 @@ export class CreateCourseComponent implements OnInit {
     );
   }
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
   saveCourse() {
-    this.courseService.createCourse(this.course).subscribe(data => {
+    const formData = new FormData();
+    formData.append('file', this.selectedFile as Blob);
+    formData.append('course', JSON.stringify(this.course));
+
+    this.courseService.createCourse(formData).subscribe(data => {
         console.log(data);
         this.goToCourseList();
       },
@@ -47,7 +64,7 @@ export class CreateCourseComponent implements OnInit {
   }
 
   goToCourseList() {
-    this.router.navigate(['/courses']);
+    this.router.navigate(['/backtemplate/courses']);
   }
 
   onSubmit() {

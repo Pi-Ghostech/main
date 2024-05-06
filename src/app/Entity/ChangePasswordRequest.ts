@@ -1,5 +1,7 @@
 export class ChangePasswordRequest{
-  currentPassword!:string;
+/*
+  oldPassword!:string;
+*/
   newPassword!:string;
   confirmationPassword!:string;
 }

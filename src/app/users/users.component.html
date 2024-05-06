@@ -1,40 +1,58 @@
-
 <h1>Liste Users</h1>
+
+
+
 <div class="row">
-  <div >
-    <table class="table">
+
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="searchedUser">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="searchusers(searchedUser)">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
       <tr>
         <th>Id</th>
+        <th>Email</th>
         <th>Name</th>
         <th>Password</th>
-        <th>Email</th>
         <th>Roles</th>
-
+        <th>Action</th>
       </tr>
-      <tr *ngFor="let a of listUsers; let i=index">
-        <td>{{a.id}}</td>
-        <td>{{a.email}}</td>
-        <td>{{a.name}}</td>
-        <td>{{a.password}}</td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of listUsers; let i=index">
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.password }}</td>
         <td>
-          <ul>
-            <li *ngFor="let role of a.roles">{{ role.name }}</li>
+          <ul class="list-unstyled">
+            <li *ngFor="let role of user.roles">
+            <div>{{ role.name }}</div>
+            </li>
           </ul>
         </td>
-        <!--   <td>
-             <button class="btn btn-success"  (click)="deleteAbon(a.numAbon)">Delete</button>
-           </td>
-           <td>
-             <button class="btn btn-success"  [routerLink]="['/update']" [queryParams]="{ id: a.numAbon }" >Update</button>
-           </td>-->
-
-
-
+        <td>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/backtemplate/updateuser']" [queryParams]="{ id: user.id }">
+              <i class="fas fa-edit"></i> Update
+            </button>
+          </div>
+        </td>
       </tr>
+      </tbody>
     </table>
-
-
   </div>
-
 </div>
-<div><router-outlet></router-outlet>
+
+

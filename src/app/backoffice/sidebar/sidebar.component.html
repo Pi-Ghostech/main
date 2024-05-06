@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/backtemplate">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -30,32 +30,31 @@
             <!-- Nav Item - Pages Collapse Menu -->
           <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwos"
-               aria-expanded="true" aria-controls="collapseTwo">
-              <i class="fas fa-fw fa-cog"></i>
+               aria-expanded="false" aria-controls="collapseTwos">
+              <i class="fas fa-fw fa-address-book"></i>
               <span>Users</span>
             </a>
             <div id="collapseTwos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Users:</h6>
-
-                <a class="collapse-item" routerLink="/users">Users</a>
-                <a class="collapse-item" routerLink="/roles">Roles</a>
-
+                <a class="collapse-item" routerLink="/backtemplate/users">Users</a>
               </div>
             </div>
           </li>
+
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-address-book"></i>
                     <span>Modules</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Modules:</h6>
 
-                        <a class="collapse-item" routerLink="/courses">Course</a>
-                        <a class="collapse-item" routerLink="/modules">Modules</a>
+                        <a class="collapse-item" routerLink="/backtemplate/courses">Course</a>
+                        <a class="collapse-item" routerLink="/backtemplate/modules">Modules</a>
 
                     </div>
                 </div>
@@ -64,4 +63,19 @@
 
 
         </ul>
+        <script>
+          $(document).ready(function() {
+            $('.nav-link').click(function() {
+              var $target = $($(this).attr('data-target'));
+              if ($target.hasClass('show')) {
+                $target.collapse('hide');
+              } else {
+                $('.collapse.show').collapse('hide');
+                $target.collapse('show');
+              }
+            });
+          });
+        </script>
         <!-- End of Sidebar -->
+
+
