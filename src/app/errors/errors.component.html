@@ -1,0 +1,58 @@
+<section class="slider_section long_section">
+  <div class="container ">
+      <div class="row justify-content-center">
+          <div class="col-md-5">
+              <div class="detail-box">
+                  <div class="btn-box d-flex justify-content-center mt-3">
+                     
+                      <a href="/frontClient/categories" class="btn1">
+                          Back
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+<section class="blog_section layout_padding">
+    
+    <div class="container">
+        
+      <div class="heading_container">
+        <h2>
+          Problems List
+        </h2>
+      </div>
+     
+      <div class="row">
+        <ng-container *ngFor="let error of listErrors; let i=index">
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img [src]="getImageSource(error.category)" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  {{ error.titre }}
+                </h5>
+                <p>
+                  {{ truncateDescription(error.description) }}
+                </p>
+                
+                <a  (click)="getErrorById(error.idErreur)" class="btn btn-info">Read More</a>
+
+              </div>
+            </div>
+          </div>
+          <!-- Add the following code after every third box -->
+          <div class="clearfix visible-md visible-lg"></div>
+          <div class="clearfix visible-sm"></div>
+        </ng-container>
+      </div>
+
+
+    </div>
+  </section>

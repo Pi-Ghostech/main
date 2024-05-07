@@ -1,0 +1,122 @@
+
+
+
+<br>
+<br>
+<br>
+<!-- <div class="search-container">
+    <input type="text" placeholder="Titre du projet" [(ngModel)]="searchText">
+    <button (click)="rechercher()">Search</button>
+  </div>
+   -->
+
+
+
+
+<!-- <a class="collapse-item btn btn-primary float-right" routerLink="/create-Projet">Create Project</a> -->
+
+
+
+
+
+
+
+<section class="slider_section long_section">
+    <div class="container ">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="detail-box">
+                <div class="btn-box">
+
+                        <a class="collapse-item btn btn-primary float-right" routerLink="/frontClient/create-Projet">Create Project</a>
+
+
+
+                    <a href="" class="btn1">
+                     Back
+                    </a>
+                  </div>
+            </div></div></div>
+
+
+
+        </div>
+
+
+
+</section>
+
+<div class="search-container">
+  <input type="text" placeholder="Titre du projet" [(ngModel)]="searchText">
+
+  <button   (click)="rechercher(searchText)">Rechercher</button>
+  <!-- <button  routerLink="/recherche/*" (click)="rechercher()">Rechercher</button> -->
+
+</div>
+
+<div>
+
+
+<section class="blog_section layout_padding">
+
+    <div class="container">
+
+      <div class="heading_container">
+        <h2>
+          Projets
+        </h2>
+      </div>
+
+      <div class="row">
+        <ng-container *ngFor="let projet of projets; let i=index">
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="box">
+              <div class="img-box">
+                <img src="assets/images2/b1.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                    {{ projet.lienSiteWeb}}                       <button (click)="copyLink(projet.lienSiteWeb)" class="btn btn-copy">
+                        <i class="fa fa-copy"></i> Copy Link
+                    </button>
+                </h5>
+                <p>
+                    {{ projet.titre }}
+                  {{projet.user }}
+                </p>
+                <p> <span *ngFor="let star of generateStars(projet.rating)">
+                          <i class="fa fa-star" [ngClass]="star"></i>
+                      </span>
+</p>
+
+
+<button (click)="getDetail(projet.projetDetail.idProjet)" class="btn btn-detail">
+
+    <i class="fa fa-info-circle"></i> Details
+</button>
+<button     routerLink="/chat/*"               class="btn btn-chat">
+    <i class="fa fa-edit"></i> Chat
+</button>
+                <div *ngFor="let user of this.user.projets">
+<button (click)="deleteProjet(projet.projetID)"  class="btn btn-delete">
+
+
+ <div *ngIf="projet.projetID===user.projetID"><i class="fa fa-trash" >Delete</i> </div>
+
+</button>
+              </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add the following code after every third box -->
+          <div class="clearfix visible-md visible-lg"></div>
+          <div class="clearfix visible-sm"></div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+
+
+
+
+

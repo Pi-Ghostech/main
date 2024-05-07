@@ -1,0 +1,11 @@
+.detail-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .detail-box h5, .detail-box a {
+    margin: 0;
+  }

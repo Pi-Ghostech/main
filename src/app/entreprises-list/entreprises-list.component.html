@@ -1,0 +1,34 @@
+<div class="mb-4">
+  <a routerLink="/backtemplate/create-entreprise" routerLinkActive="active" class="btn btn-primary">New Enterprise</a>
+</div>
+<h2>List of Enterprises</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entreprise of entreprises">
+      <td>{{ entreprise.id }}</td>
+      <td>{{ entreprise.nom }}</td>
+      <td>{{ entreprise.description }}</td>
+      <td>{{ entreprise.email }}</td>
+      <td>{{ entreprise.phone }}</td>
+      <td>{{ entreprise.latitude }}</td>
+      <td>{{ entreprise.longitude }}</td>
+      <td>
+        <button (click) = "updateEntreprise(entreprise.id)" class="btn btn-info">Update</button>
+          <button (click) = "deleteEntreprise(entreprise.id)"  class="btn btn-danger" style="margin-left: 10px">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,33 @@
+<div class="mb-4">
+  
+</div>
+<h1>Problems List</h1>
+<div class="row">
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Creation Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let error of listErrors; let i=index">
+          <td>{{ error.titre }}</td>
+          <td>{{ error.category }}</td> 
+          <td>{{ truncateDescription(error.description) }}</td>
+          <td>{{ error.dateCreationErr | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+          
+          <td>
+            <button (click)="getErrorById(error.idErreur)" class="btn btn-info">Details</button>
+            <button (click)="deleteError(error.idErreur)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

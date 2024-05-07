@@ -1,0 +1,14 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update your comment</h3>
+    <form (ngSubmit) = "onSubmit()">
+        <input type="hidden" [(ngModel)]="commentId" name="moduleId">
+        <div class="form-group">
+            <label>Change your response</label>
+            <input type="text" class="form-control" id="moduleName"
+                [(ngModel)] = "comment.reponse" name="moduleName">
+        </div>
+    
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>
+  

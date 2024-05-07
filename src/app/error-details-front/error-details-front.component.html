@@ -1,0 +1,160 @@
+<section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="row heading_container" *ngIf="error && user">
+              <h2 class="best-comment" >By @{{ user.name }}</h2>
+                <h2>{{ error.titre }}</h2>
+             
+            </div>
+            
+            <h4  style="margin-top: 10px; ">{{ error.description }}</h4>
+            <div class="detail-box">
+                <div class="name">
+                  <h6>{{ error.dateCreationErr | date: 'dd/MM/yyyy HH:mm:ss' }}</h6>
+                </div></div>
+            
+          
+          </div>
+          <div class="container "> 
+            <p></p>
+            <p></p>
+          </div>
+          <section class="slider_section long_section">
+            <div class="container ">           
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="detail-box">
+                        <div class="btn-box">
+                            <a *ngIf="Connecteduser && user && Connecteduser.id === user.id" (click)="openCreateImageForm(error.idErreur)" class="btn2">
+                             Image
+                            </a>
+                            <a *ngIf="Connecteduser && user && Connecteduser.id === user.id" (click)="onUpdateclick(error.idErreur)" class="btn2">
+                              Update
+                             </a>
+                            <a (click)="onReplyClick(error.idErreur)" class="btn2">
+                                Reply
+                               </a>
+                            <a (click)="back(error.category)" class="btn1">
+                             Back
+                            </a>
+                            <a *ngIf="Connecteduser && user && Connecteduser.id === user.id" (click)="deleteError(error.idErreur)" class="btn1">
+                                Delete
+                               </a>
+                          </div>
+                    </div></div></div></div>
+        </section>
+         
+       
+         
+          
+        </div>
+        <div class="col-md-6" *ngIf="listImages && listImages.length > 0">
+            <div class="row">
+              <div class="col-12">
+                <h3>Screenshots</h3>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-4" *ngFor="let image of listImages">
+                    <div class="card mb-3">
+                      <img [src]="getImageUrl(image)" alt="Image" class="card-img-top img-fluid" style="height: 200px;" (click)="displayImage(image)" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+      </div>
+    </div>
+  </section>
+ 
+  
+  <section class="client_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Possible Solutions</h2>
+        </div>
+
+        <div *ngFor="let comment of listComments; let i=index">
+            <div class="carousel slide" data-ride="carousel" [id]="'carouselExampleControls' + i">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item" *ngFor="let c of [comment]; let j=index" [class.active]="j === 0">
+                        <div class="row">
+                            <div class="col-md-11 col-lg-10 mx-auto">
+                                <div class="box" [ngClass]="{'best-comment-container': i === 0}">
+
+                                    <div class="detail-box" >
+                                      <h2 class="best-comment" *ngIf="i === 0" style="text-align: center;">Best Comment</h2>
+                                      <h4 class="response" *ngIf="comment.isOwner"> Your comment</h4>  
+                                      <h6>{{ c.dateCreationCom | date: 'dd/MM/yyyy HH:mm:ss' }}</h6>
+                                        <h4 class="response">{{ c.reponse }}</h4>
+                                       
+                                        <div class="likes-box">
+                                            <i class="fas fa-thumbs-up fa-lg thumbs-up-icon"></i>
+                                            <p class="likes-count" style="color: #6bb7be;">{{ c.likes }}</p>
+                                        </div>
+                                        <section class="slider_section long_section">
+                                          <div class="container">
+                                              <div class="row justify-content-center">
+                                                  <div class="col-md-5">
+                                                      <div class="detail-box">
+                                                          <div class="btn-box d-flex justify-content-center align-items-center"> <!-- Added align-items-center class -->
+                                                              <!-- Update and Like buttons -->
+                                                              <a *ngIf="comment.isOwner" (click)="onUpdateCommentclick(comment.idComment,error.idErreur)" class="btn btn-sm btn2">
+                                                                  Update
+                                                              </a>
+                                                              <a *ngIf="comment.isOwner" (click)="deleteComment(comment.idComment)" class="btn btn-sm btn1">
+                                                                  Delete
+                                                              </a>
+                                                              <a (click)="updateLikes(comment.idComment)" class="btn btn-sm btn2">
+                                                                  Like
+                                                              </a>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </section>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+  
+  
+  
+  <div *ngIf="displayedImage">
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Zoom</h5>
+            <div class="delete-button">
+              <button class="btn btn-danger" (click)="deleteImage(displayedImage.id)">Delete</button>
+            </div>
+            <button type="button" class="close" aria-label="Close" (click)="closeImage()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="image-container">
+              <img [src]="getImageUrl(displayedImage)" alt="Image" class="zoom-image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" (pageChange)="onPageChange($event)"></app-pagination>

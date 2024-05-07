@@ -1,0 +1,22 @@
+<div class="col-md-6 offset-md-3">
+  <h3>Make a change</h3>
+  <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
+    <div class="form-group">
+      <label>Your solution</label>
+      <input type="text" class="form-control" id="reponse" [(ngModel)]="comment.reponse" name="reponse" required
+        [ngClass]="{ 'is-invalid': commentFormControl.invalid && commentFormControl.dirty }">
+      <div *ngIf="commentFormControl?.invalid && commentFormControl?.dirty" class="invalid-feedback">
+        <div *ngIf="commentFormControl?.hasError('required')">
+          Your solution is required.
+        </div>
+        <div *ngIf="commentFormControl?.hasError('badWord')">
+          Your comment contains a bad word. Please revise your comment.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="commentForm.invalid || (commentFormControl.invalid && commentFormControl.dirty)">
+      Submit
+    </button>
+  </form>
+</div>

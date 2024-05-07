@@ -1,0 +1,117 @@
+<div class="mb-4">
+  <a routerLink="/backtemplate/create-stage" routerLinkActive="active" class="btn btn-primary">New Offer</a>
+</div>
+<h2>List of Internships</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Duree</th>
+          <th>Status</th>
+          <th>Payant</th>
+          <th>Amount</th>
+          <th>Location</th>
+          <th>Entreprise</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stage of stages">
+          <td>{{ stage.id }}</td>
+          <td>{{ stage.titre }}</td>
+          <td>{{ stage.description }}</td>
+          <td>{{ stage.date  | date: 'dd/MM/yyyy'}}</td>
+          <td>{{ stage.duree }}</td>
+          <td>{{ stage.status }}</td>
+          <td>{{ stage.payant }}</td>
+          <td>{{ stage.amount }}</td>
+          <td>{{ stage.location }}</td>
+          <td>{{ stage.entreprise.nom }}</td>
+
+          <td>
+            <button (click) = "updateStage(stage.id)"  class="btn btn-info">Update</button>
+            <button (click) = "deleteStage(stage.id)"  class="btn btn-danger" style="margin-left: 10px">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <h2>Available Internships</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Duree</th>
+            <th>Status</th>
+            <th>Payant</th>
+            <th>Amount</th>
+            <th>Location</th>
+            <th>Entreprise</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stage of stagesbyactif">
+            <td>{{ stage.id }}</td>
+            <td>{{ stage.titre }}</td>
+            <td>{{ stage.description }}</td>
+            <td>{{ stage.date  | date: 'dd/MM/yyyy'}}</td>
+            <td>{{ stage.duree }}</td>
+            <td>{{ stage.status }}</td>
+            <td>{{ stage.payant }}</td>
+            <td>{{ stage.amount }}</td>
+
+          <td>{{ stage.location }}</td>
+            <td>{{ stage.entreprise.nom }}</td>
+            <td>
+              <button (click) = "unavailableStage(stage.id)"  class="btn btn-primary">Unavailable</button>
+           </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <br><br>
+    <h2>Unavailable Internships</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Duree</th>
+              <th>Status</th>
+              <th>Payant</th>
+              <th>Amount</th>
+              <th>Location</th>
+              <th>Entreprise</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stage of stagesbyinactif">
+              <td>{{ stage.id }}</td>
+              <td>{{ stage.titre }}</td>
+              <td>{{ stage.description }}</td>
+              <td>{{ stage.date  | date: 'dd/MM/yyyy'}}</td>
+              <td>{{ stage.duree }}</td>
+              <td>{{ stage.status }}</td>
+              <td>{{ stage.payant }}</td>
+              <td>{{ stage.amount }}</td>
+
+          <td>{{ stage.location }}</td>
+              <td>{{ stage.entreprise.nom }}</td>
+              <td>
+                <button (click) = "availableStage(stage.id)"  class="btn btn-primary">Available</button>
+             </td>
+
+          </tr>
+        </tbody>
+      </table>

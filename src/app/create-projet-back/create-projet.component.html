@@ -1,0 +1,25 @@
+<div class="col-md-8 offset-md-3">
+<h3>Ajouter un Projet</h3>
+<form  (ngSubmit) = "onSubmit()">
+    
+    <div class="form-group">
+        <label for="Titre">Titre</label>
+        <input type="text" class="form-control" id="Titre" [(ngModel)]="projets.titre" name="Titre" required>
+      </div>
+<div class ="form-group">
+    <label> lienSiteWeb</label>
+    <input type="text" class="form-control" id="lienSiteWeb" [(ngModel)]="projets.lienSiteWeb" name="lienSiteWeb">
+</div>
+<div class ="form-group">
+    <label>description</label>
+    <input type="text" class="form-control" id="description" [(ngModel)]="projets.description" name="description">
+</div>
+<div class ="form-group">
+    <label>rating</label>
+    <input type="text" class="form-control" id="rating" [(ngModel)]="projets.rating" name="rating">
+</div>
+
+<button class="btn btn-success" type="submit">Submit</button>
+
+</form>
+</div>

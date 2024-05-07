@@ -1,0 +1,74 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update an Existing Enterprise </h3>
+    <form (ngSubmit) = "onSubmit()" #entrepriseForm="ngForm" novalidate>
+        <input type="hidden" [(ngModel)]="entreprise.id" name="Id">
+        <div class="form-group">
+            <label>Entreprise Name</label>
+            <input type="text" class="form-control" id="entrepriseName"
+                [(ngModel)]="entreprise.nom" name="nom" required>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" id="description"
+                [(ngModel)]="entreprise.description" name="description" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email"
+                [(ngModel)]="entreprise.email" name="email" required email>
+            <div *ngIf="entrepriseForm.controls['email'].invalid && (entrepriseForm.controls['email'].dirty || entrepriseForm.controls['email'].touched)" class="text-danger">
+                <div *ngIf="entrepriseForm.controls['email'].errors">Please Enter a Valid Email.</div> 
+            </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" class="form-control" id="phone"
+              [(ngModel)]="entreprise.phone" name="phone" required pattern="[24579][0-9]{7}">
+          <div *ngIf="entrepriseForm.controls['phone']?.invalid && (entrepriseForm.controls['phone']?.dirty || entrepriseForm.controls['phone']?.touched)" class="text-danger">
+              <div *ngIf="entrepriseForm.controls['phone']?.errors">Please Enter a Tunisian Phone Number</div>
+          </div>
+      </div>
+  
+
+      <br>
+      <h5>Location of the Entreprise</h5>
+      
+      <div class="form-group">
+        <label>Latitude</label>
+        <input type="text" class="form-control" id="latitude"
+            [(ngModel)]="entreprise.latitude" name="latitude" disabled>
+      </div>
+       
+      <div class="form-group">
+        <label>Longitude</label>
+        <input type="text" class="form-control" id="longitude"
+            [(ngModel)]="entreprise.longitude" name="longitude" disabled>
+      </div>
+      
+      
+      <div id="googleMap">
+          <google-map
+            height="400px"
+            width="750px"
+            [center]="center"
+            [zoom]="zoom" 
+            (mapMousemove)="move($event)" 
+            (mapClick)="addMarker($event)"
+          >
+            <map-marker *ngIf="markerPosition" [position]="markerPosition" [options]="markerOptions"></map-marker>
+          </google-map>
+        </div>
+        
+       
+        <div *ngIf="display">
+          Latitude: {{ display2.lat }} 
+        </div>
+        <div *ngIf="display">
+          Longitude: {{ display2.lng }}
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

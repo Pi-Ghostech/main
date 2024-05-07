@@ -1,0 +1,35 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Please Describe Your Problem</h3>
+    <form (ngSubmit)="onSubmit()" #errorForm="ngForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" id="errorTitle" [(ngModel)]="errorr.titre" name="errorTitle" required>
+      </div>
+  
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" id="description" rows="5" [(ngModel)]="errorr.description" name="description" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label>Category</label>
+        <select class="form-control" id="category" [(ngModel)]="errorr.category" name="category" required>
+          <option value="Front_end">Front-end</option>
+          <option value="Back_end">Back-end</option>
+          <option value="DevOps">DevOps</option>
+          <option value="Cloud_Computing">Cloud Computing</option>
+          <option value="Data_Science">Data Science</option>
+          <option value="Mobile_Development">Mobile Development</option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="AI_and_Machine_Learning">AI and Machine Learning</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      
+      
+     
+      <button class="btn btn-success" type="submit" [disabled]="!errorForm.valid">Submit</button>
+    </form>
+   
+  </div>
+  

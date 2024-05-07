@@ -1,0 +1,151 @@
+
+
+
+
+    <!-- blog section -->
+
+    <section class="blog_section layout_padding">
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="container">
+
+
+
+        <div class="heading_container">
+          <h2>
+            Entreprises
+          </h2>
+        </div>
+
+
+
+
+
+        <div>
+          <canvas
+            baseChart
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [type]="chartType"
+          ></canvas>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mx-auto" *ngFor="let entreprise of entreprises; let x = index">
+              <div class="box">
+                <div class="img-box">
+                  <img *ngIf="x === 0" src="assets/entrep/6.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 1" src="assets/entrep/2.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 2" src="assets/entrep/7.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 3" src="assets/entrep/3.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 4" src="assets/entrep/10.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 5" src="assets/entrep/1.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 6" src="assets/entrep/4.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 7" src="assets/entrep/8.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 8" src="assets/entrep/9.jpg" alt="Module GIF" width="300" height="200">
+                  <img *ngIf="x === 9" src="assets/entrep/5.jpg" alt="Module GIF" width="300" height="200">
+                </div>
+
+
+                <div class="detail-box">
+                  <h5>{{ entreprise.nom }}</h5> <p>{{ entreprise.description }}</p>
+                  <td><a class="nav-link" [routerLink]="'/frontClient/entreprises/' + entreprise.id">More Information.. </a></td>
+                 </div>
+              </div>
+            </div>
+         </div>
+
+
+
+
+        <br><br><br><br>
+        <div class="heading_container">
+          <h2>
+            Available Internships
+          </h2>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>Paid</th>
+                    <th>Amount</th>
+                    <th>Location</th>
+                    <th>Host Entreprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let stage of stagesbyactif">
+                    <td>{{ stage.titre }}</td>
+                    <td>{{ stage.description }}</td>
+                    <td>{{ stage.date | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ stage.duree }}</td>
+                    <td>{{ stage.payant }}</td>
+                    <td>{{ stage.amount }}</td>
+                    <td>{{ stage.location }}</td>
+                    <td><a class="nav-link" [routerLink]="'/frontClient/entreprises/' + stage.entreprise.id">More offers from {{ stage.entreprise.nom }}</a></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+
+        <br><br><br>
+
+        <div class="heading_container">
+          <h2>
+            The Following Internships Are Not Available Anymore
+          </h2>
+
+          <table class="table table">
+            <thead>
+              <tr>
+
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>Paid</th>
+                    <th>Amount</th>
+                    <th>Location</th>
+                    <th>Host Entreprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let stage of stagesbyinactif">
+                    <td>{{ stage.titre }}</td>
+                    <td>{{ stage.description }}</td>
+                    <td>{{ stage.date  | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ stage.duree }}</td>
+                    <td>{{ stage.payant }}</td>
+                    <td>{{ stage.amount }}</td>
+                    <td>{{ stage.location }}</td>
+                    <td><a class="nav-link" [routerLink]="'/frontClient/entreprises/' + stage.entreprise.id">More offers from {{ stage.entreprise.nom }}</a></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+
+
+
+
+      </div>
+    </section>

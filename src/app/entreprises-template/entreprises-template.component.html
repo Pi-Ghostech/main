@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .huhh {
+
+        background-color: rgba(107, 183, 190, 0.415);
+
+        margin: auto;
+  width: 80%; ;
+
+
+       h2 .blue-text {
+        color: rgba(107, 183, 190);
+         }
+
+      }
+      </style>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <link rel="icon" href="assets/images2/fevicon.png" type="image/gif" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Edgecut</title>
+  </head>
+
+  <body>
+    <!-- header section strats -->
+
+
+    <!-- end header section -->
+
+
+
+        <div  >
+  <!-- contact section -->
+  <section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-15 mx-auto" >
+          <div class="form_container">
+            <div class="heading_container"><br>
+              <h2 id="infos" >
+                {{ entreprise.nom }}
+              </h2>
+            </div>
+
+
+
+
+            <div class="box">
+              <div class="detail-box">
+                <br>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span> Description </span>
+                    <br>
+                    <h5>{{ entreprise.description }}</h5>
+                  </h6>
+                </div>
+                <br>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span> Email </span>
+                    <br>
+                    <h5>{{ entreprise.email }}</h5>
+                  </h6>
+                </div>
+                <br>
+                <div class="price_box">
+                  <h6 class="price_heading">
+                    <span> Phone Number </span>
+                    <br>
+                    <h5>{{ entreprise.phone }}</h5>
+                  </h6>
+                </div>
+              </div>
+              <br><br>
+            </div>
+            <div class="btn_box">
+              <button>
+                <a  class="nav-link" href="/frontClient/entreprises/{{ entreprise.id }}#list">View Internship Offers</a>
+              </button>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap">
+                <google-map height="400px"
+                width="500px"
+                [center]="center"
+                [zoom]="zoom">
+                <map-marker [position]="center" [options]="markerOptions"></map-marker>
+                </google-map>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- end contact section -->
+
+
+  <!--
+    <google-map height="400px"
+    width="750px"
+    [center]="center"
+    [zoom]="zoom"
+    (mapClick)="addMarker($event)">
+  <map-marker *ngFor="let markerPosition of markerPositions"
+      [position]="markerPosition"
+      [options]="markerOptions"></map-marker>
+  </google-map>
+  -->
+  <br><br><br>
+  <section class="client_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Internship Offers from {{ entreprise.nom }}
+        </h2>
+      </div>
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-80 col-lg-50 mx-auto">
+                <div class="box">
+
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6 id="list">
+                       ...
+                      </h6>
+                    </div>
+                    <table class="table table">
+                      <thead>
+                        <tr>
+                          <th>Status</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Date</th>
+                          <th>Duration</th>
+                          <th>Paid</th>
+                          <th>Amount</th>
+                          <th>Location</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let stage of stagesbyentreprise">
+                          <td>{{ stage.status }}</td>
+                          <td>{{ stage.titre }}</td>
+                          <td>{{ stage.description }}</td>
+                          <td>{{ stage.date  | date: 'dd/MM/yyyy'}}</td>
+                          <td>{{ stage.duree }}</td>
+                          <td>{{ stage.payant }}</td>
+                          <td>{{ stage.amount }}</td>
+                          <td>{{ stage.location }}</td>
+                          <td>
+                            <a class="nav-link" [routerLink]="'/frontClient/entreprises/' + stage.entreprise.id">{{ stage.entreprise.nom }}</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+    <!-- end contact section -->
+    <!-- footer section -->
+
+
+  </body>
+</html>
+<router-outlet></router-outlet>

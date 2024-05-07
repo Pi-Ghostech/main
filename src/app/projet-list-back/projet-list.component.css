@@ -1,0 +1,64 @@
+.star-yellow {
+  color: rgb(211, 211, 16);
+}
+
+.star-gray {
+  color: gray;
+}
+.btn-copy {
+  background-color: transparent;
+  color: #5cb85c; /* Couleur du texte */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-copy:hover {
+  background-color: rgba(92, 184, 92, 0.1); /* Couleur de survol */
+}
+
+.btn-copy i {
+  margin-right: 5px;
+}
+
+
+
+
+
+.btn-copy {
+  background-color: transparent;
+  color: #5cb85c; /* Couleur du texte */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-update:hover {
+  background-color: rgba(7, 171, 7, 0.1); /* Couleur de survol */
+}
+
+.btn-update i {
+  margin-right: 5px;
+}
+.btn-delete {
+  background-color: transparent;
+  color: #d9534f; /* Couleur rouge */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: rgba(217, 83, 79, 0.1); /* Couleur de survol rouge */
+}
+.btn-detail {
+  background-color: transparent;
+  color: #0b1d53; /* Couleur rouge */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-detail:hover {
+  background-color: rgba(217, 83, 79, 0.1); /* Couleur de survol rouge */
+}

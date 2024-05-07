@@ -1,0 +1,46 @@
+<h2>Liste des Projets</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>lien Site Web</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Ratting</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let projet of projets">
+            <td>{{ projet.lienSiteWeb}}</td>
+            <td>{{ projet.titre }}</td>
+            <td>{{ projet.description }}</td>
+            <td>
+                <span *ngFor="let star of generateStars(projet.rating)">
+                    <i class="fa fa-star" [ngClass]="star"></i>
+                </span>
+            </td>
+            <td>
+                <button (click)="copyLink(projet.lienSiteWeb)" class="btn btn-copy">
+                    <i class="fa fa-copy"></i> Copy Link
+                </button>
+
+                <button (click)="updateProjet(projet.projetID)" class="btn btn-update">
+                    <i class="fa fa-edit"></i> Update
+                </button>
+
+                <button (click)="deleteProjet(projet.projetID)"  class="btn btn-delete">
+                    <i class="fa fa-trash"></i> Delete
+                </button>
+
+                <button (click)="getDetail(projet.projetID)" class="btn btn-detail">
+                    <i class="fa fa-info-circle"></i> Details
+                </button>
+
+
+
+
+            </td>
+        </tr>
+    </tbody>
+</table>
