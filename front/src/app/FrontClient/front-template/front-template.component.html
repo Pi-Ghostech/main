@@ -1,0 +1,125 @@
+<div *ngIf="isloggedin">
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="assets/images2/fevicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Edgecut</title>
+
+</head>
+
+<body>
+
+<div class="hero_area">
+  <!-- header section strats -->
+  <header class="header_section long_section px-0">
+    <nav class="navbar navbar-expand-lg custom_nav-container ">
+      <a class="navbar-brand" href="index.html">
+          <span>
+            Edgecut
+          </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""> </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+          <ul class="navbar-nav  ">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/projet"> Projet</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="furniture.html">Furnitures</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+
+
+        <div *ngIf="profileOff">
+          <div class="quote_btn-container">
+            <a (click)="navigate()">
+              <span>Login</span>
+            </a>
+          </div>
+        </div>
+
+        <div *ngIf="profileOn && !profileOff">
+          <div>
+            <a (click)="navigateto()">
+              <span>Profile</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+
+  </header>
+  <!-- end header section -->
+  <!-- slider section -->
+
+  <!-- end slider section -->
+</div>
+
+<!-- furniture section -->
+
+
+<!-- end furniture section -->
+
+
+<!-- about section -->
+
+
+
+<!-- end about section -->
+
+<!-- blog section -->
+
+
+
+<!-- end blog section -->
+
+<!-- client section -->
+
+
+
+<!-- end client section -->
+
+<!-- contact section -->
+
+<!-- end contact section -->
+
+<!-- info section -->
+
+<!-- end info_section -->
+
+
+
+
+<!-- footer section -->
+</body>
+
+</html>
+</div>

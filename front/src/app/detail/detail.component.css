@@ -1,0 +1,28 @@
+.project-details-container {
+    border: 2px solid #ccc;
+    border-radius: 10px; /* Ajoute des coins arrondis */
+    padding: 10px;
+    background-color: #bfc7d0; /* Couleur de fond légèrement plus claire */
+  }
+  
+  
+  .project-detail {
+    display: flex; /* Utilisation de flexbox pour afficher les éléments en ligne */
+    margin-bottom: 10px;
+  }
+  
+  .attribute {
+    font-weight: bold;
+    margin-right: 10px; /* Ajoute un espacement à droite entre l'attribut et la valeur */
+  }
+  
+  .value {
+    margin-left:1px; /* Pousse la valeur vers la droite pour qu'elle soit alignée à droite */
+  }
+  .star-yellow {
+    color: rgb(230, 230, 44);
+  }
+  
+  .star-gray {
+    color: gray;
+  }

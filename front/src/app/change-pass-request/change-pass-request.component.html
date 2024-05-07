@@ -1,0 +1,42 @@
+  <!-- Your login form component -->
+
+  <div class="container">
+
+
+    <h1>Change Password Form</h1>
+    <form #f="ngForm" > <!--2eme methode-->
+      <div>
+        <label>Password</label>
+        <input type="password"  name="password" class="form-control" [(ngModel)]="passrequest.newPassword" ngModel #p="ngModel" required>
+      </div>
+      <div class=" alert alert-danger" *ngIf="p.invalid && p.touched">
+        the password is a required feild !
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password"  name="password" class="form-control" [(ngModel)]="passrequest.confirmationPassword" ngModel #p="ngModel" required>
+      </div>
+      <div class=" alert alert-danger" *ngIf="p.invalid && p.touched">
+        the password is a required feild !
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-success" [disabled]="f.invalid" type="submit" (click)="changepass()">Save</button>
+            <button class="btn btn-success" type="submit" (click)="navigate()">Login</button>
+            <div class=" alert alert-danger" *ngIf="passwordChanged">Password CHanged Succeffuly !</div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </form>
+
+
+  </div>
+
+
+<router-outlet></router-outlet>
+

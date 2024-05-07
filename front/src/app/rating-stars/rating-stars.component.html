@@ -1,0 +1,14 @@
+<div class="rating">
+    <span class="star" *ngFor="let _ of [1, 2, 3, 4, 5]" 
+      [class.active]="rating >= _"
+      (click)="onClick(_)">
+      &#9733;
+    </span>
+  </div>
+  
+
+
+   <!-- <span *ngFor="let star of stars" (click)="onClick(star)" [ngClass]="{'filled': star <= currentRating}">
+    <i class="fa fa-star"></i>
+  </span>
+   -->
