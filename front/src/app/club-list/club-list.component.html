@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <!-- Header Section -->
+  <div class="row mb-4">
+    <div class="col">
+      <h2>Manage Clubs</h2>
+      <div>
+        <a routerLink="/create-club" routerLinkActive="active" class="btn btn-primary">Add Club</a>
+        <button (click)="sortClubsByNom()" class="btn btn-info ml-2">Sort by Name</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Section -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Name" class="form-control">
+    </div>
+    <div class="col-md-3">
+      <button (click)="searchClubs()" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+
+  <!-- Clubs List Section -->
+  <div class="row">
+    <div class="col">
+      <h2>Clubs List</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let club of clubs">
+            <td>{{ club.nom }}</td>
+            <td>{{ club.description }}</td>
+            <td>
+              <button (click)="updateClub(club.id)" class="btn btn-info">Update</button>
+              <button (click)="deleteClub(club.id)" class="btn btn-danger ml-2">Delete</button>
+            </td>
+          </tr>
+          <!-- Add an empty row for visual separation -->
+          <tr *ngIf="clubs.length === 0">
+            <td colspan="3" class="text-center">No clubs found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

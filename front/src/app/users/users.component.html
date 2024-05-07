@@ -1,0 +1,41 @@
+
+
+<h1>Liste Users</h1>
+<div class="row">
+  <div >
+    <table class="table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Roles</th>
+
+      </tr>
+      <tr *ngFor="let a of listUsers; let i=index">
+        <td>{{a.id}}</td>
+        <td>{{a.email}}</td>
+        <td>{{a.name}}</td>
+        <td>{{a.password}}</td>
+        <td>
+          <ul>
+            <li *ngFor="let role of a.roles">{{ role.name }}</li>
+          </ul>
+        </td>
+        <!--   <td>
+             <button class="btn btn-success"  (click)="deleteAbon(a.numAbon)">Delete</button>
+           </td>
+           <td>
+             <button class="btn btn-success"  [routerLink]="['/update']" [queryParams]="{ id: a.numAbon }" >Update</button>
+           </td>-->
+
+
+
+      </tr>
+    </table>
+
+
+  </div>
+
+</div>
+

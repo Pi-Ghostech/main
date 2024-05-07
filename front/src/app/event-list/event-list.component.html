@@ -1,0 +1,26 @@
+<div class="mb-4">
+    <a routerLink="/create-event" routerLinkActive="active" class="btn btn-primary">Add Event</a>
+    <button (click)="getRecentEvents()" class="btn btn-success ml-2">Historique</button>
+  </div>
+  <h2>Events List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>titre</th>
+        <th>date_event</th>
+        <th>club</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events ">
+        <td>{{ event.titre }}</td>
+        <td>{{ event.date_event | date :"yyyy-MM-dd" }}</td>
+        <td>{{ event.club.nom}}</td>
+        <td>
+          <button (click) = "updateEvent(event.id)" class="btn btn-info">Update</button>
+          <button (click) = "deleteEvent(event.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
